@@ -70,9 +70,7 @@ class App extends Component {
         <Fragment>
           <div className="App">
             <Nav />
-            {console.log('app this', this)
-            /* <HomePage questions={questions} /> */
-            }
+            <Route path="/" exact component={HomePage} />
           </div>
         </Fragment>
       </Router>

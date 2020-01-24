@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import QuestionTeaser from './QuestionTeaser'
+import Question from './Question'
 
 class HomePage extends Component {
   render() {
@@ -12,9 +13,9 @@ class HomePage extends Component {
         </div>
         <ul className="questions-list">
           {console.log('homepage ul', this.props)}
-          {this.props.questions.map(id => (
+          {this.props.questionIds.map(id => (
             <li key={id}>
-              <QuestionTeaser id={id} />
+              <Question id={id} />
             </li>
           ))}
         </ul>
@@ -23,4 +24,10 @@ class HomePage extends Component {
   }
 }
 
-export default connect()(HomePage)
+function mapStateToProps({ questions }) {
+  return {
+    questionIds: Object.keys(questions),
+  }
+}
+
+export default connect(mapStateToProps)(HomePage)

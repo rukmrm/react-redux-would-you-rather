@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import Avatar from './Avatar'
+import { connect } from 'react-redux'
 
 class QuestionTeaser extends Component {
+  // const {question } = this.props
+
   render() {
     return (
       <div className="temp">

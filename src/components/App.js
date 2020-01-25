@@ -5,6 +5,7 @@ import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 import Nav from './Nav'
 import HomePage from './HomePage'
+import LeaderBoardPage from './LeaderBoardPage'
 
 class App extends Component {
   componentDidMount() {
@@ -71,6 +72,7 @@ class App extends Component {
           <div className="App">
             <Nav />
             <Route path="/" exact component={HomePage} />
+            <Route path="/leaderboard" exact component={LeaderBoardPage} />
           </div>
         </Fragment>
       </Router>

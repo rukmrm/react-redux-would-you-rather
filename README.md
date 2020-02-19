@@ -29,4 +29,4 @@ Use this app at the localhost port used by `npm start` (usually [http://localhos
 
 ## Screenshots
 
-[wyr.png](./docs/wyr.png)
+![wyr.png](./docs/wyr.png)

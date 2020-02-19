@@ -1,8 +1,9 @@
 let users = {
   sarahedo: {
     id: 'sarahedo',
+    color: '#9AFFB8',
     name: 'Sarah Edo',
-    avatarURL: 'https://placekitten.com/200/301',
+    avatarURL: 'avataaars_SE.png',
     answers: {
       '8xf0y6ziyjabvozdd253nd': 'optionOne',
       '6ni6ok3ym7mf1p33lnez': 'optionTwo',
@@ -13,8 +14,9 @@ let users = {
   },
   tylermcginnis: {
     id: 'tylermcginnis',
+    color: '#FC424A',
     name: 'Tyler McGinnis',
-    avatarURL: 'https://placekitten.com/200/302',
+    avatarURL: 'avataaars_TM.png',
     answers: {
       vthrdm985a262al8qx3do: 'optionOne',
       xj352vofupe1dqz9emx13r: 'optionTwo',
@@ -23,8 +25,9 @@ let users = {
   },
   johndoe: {
     id: 'johndoe',
+    color: '#4284DD',
     name: 'John Doe',
-    avatarURL: 'https://placekitten.com/200/303',
+    avatarURL: 'avataaars_JD.png',
     answers: {
       xj352vofupe1dqz9emx13r: 'optionOne',
       vthrdm985a262al8qx3do: 'optionTwo',
@@ -179,19 +182,22 @@ export function _saveQuestion(question) {
 }
 
 export function _saveQuestionAnswer({ authedUser, qid, answer }) {
+  console.log('authedUser, qid, answer', authedUser, qid, answer)
+
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
-        ...users,
+        ...users, // the previous state
         [authedUser]: {
-          ...users[authedUser],
+          // update this user's info...
+          ...users[authedUser], // ... make it their previous info, plus
           answers: {
-            ...users[authedUser].answers,
-            [qid]: answer,
+            // ... for their "answers" obj
+            ...users[authedUser].answers, // ...again, spread their previous answers
+            [qid]: answer, // but, finally, add their answer for their new question
           },
         },
       }
-
       questions = {
         ...questions,
         [qid]: {
@@ -202,7 +208,6 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
           },
         },
       }
-
       res()
     }, 500)
   })

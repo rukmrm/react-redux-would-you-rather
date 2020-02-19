@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Avatar from './Avatar'
 
 class LeaderBoardUserCard extends Component {
   render() {
@@ -11,13 +12,10 @@ class LeaderBoardUserCard extends Component {
     return (
       <div className="list-item-content">
         <div>
-          <div className="circle-medium">
-            <img className="cropped" src="https://placekitten.com/100/100" />
-          </div>
-
           <div className="temp">
             <h5>{user.name}</h5>
-            <div className="handle">{user.id}</div>
+            <Avatar author={user} />
+
             <div>Answered questions {countA}</div>
             <div>Asked questions {countQ}</div>
             <div>Score {score}</div>
@@ -29,8 +27,6 @@ class LeaderBoardUserCard extends Component {
 }
 
 function mapStateToProps({ users }, { id }) {
-  console.log(users)
-  console.log(id)
   const user = users[id]
 
   return {
